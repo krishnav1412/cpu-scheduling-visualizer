@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Visualizer | BCSE303L</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>🖥️ CPU Scheduling Visualizer</h1>
+            <p class="subtitle">Interactive Process Management Simulator | BCSE303L Operating Systems</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Control Panel -->
+        <section class="control-panel">
+            <div class="panel-header">
+                <h2>⚙️ Configuration Panel</h2>
+            </div>
+
+            <!-- Algorithm Selection -->
+            <div class="form-group">
+                <label for="algorithm">Scheduling Algorithm:</label>
+                <select id="algorithm" class="input-field">
+                    <option value="fcfs">First Come First Serve (FCFS)</option>
+                    <option value="sjf">Shortest Job First (SJF)</option>
+                    <option value="rr">Round Robin (RR)</option>
+                    <option value="priority">Priority Scheduling</option>
+                </select>
+            </div>
+
+            <!-- Time Quantum (for Round Robin) -->
+            <div class="form-group" id="quantum-group" style="display: none;">
+                <label for="quantum">Time Quantum:</label>
+                <input type="number" id="quantum" class="input-field" value="2" min="1" max="10">
+            </div>
+
+            <!-- Process Input Section -->
+            <div class="process-input-section">
+                <h3>Add Process</h3>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label for="processId">Process ID:</label>
+                        <input type="text" id="processId" class="input-field" placeholder="P1">
+                    </div>
+                    <div class="form-group">
+                        <label for="arrivalTime">Arrival Time:</label>
+                        <input type="number" id="arrivalTime" class="input-field" value="0" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="burstTime">Burst Time:</label>
+                        <input type="number" id="burstTime" class="input-field" value="1" min="1">
+                    </div>
+                    <div class="form-group" id="priority-group">
+                        <label for="priority">Priority:</label>
+                        <input type="number" id="priority" class="input-field" value="1" min="1">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button id="addProcess" class="btn btn-primary">➕ Add Process</button>
+                    <button id="clearProcesses" class="btn btn-secondary">🗑️ Clear All</button>
+                    <button id="loadSample" class="btn btn-secondary">📋 Load Sample</button>
+                </div>
+            </div>
+
+            <!-- Process List -->
+            <div class="process-list-section">
+                <h3>Process Queue <span id="processCount" class="badge">0</span></h3>
+                <div id="processList" class="process-list"></div>
+            </div>
+        </section>
+
+        <!-- Visualization Section -->
+        <section class="visualization-section">
+            <div class="panel-header">
+                <h2>📊 Gantt Chart Visualization</h2>
+            </div>
+
+            <!-- Animation Controls -->
+            <div class="animation-controls">
+                <button id="stepBackward" class="btn btn-control" title="Step Backward">⏮️</button>
+                <button id="play" class="btn btn-control btn-play" title="Play">▶️</button>
+                <button id="pause" class="btn btn-control" title="Pause" style="display: none;">⏸️</button>
+                <button id="stepForward" class="btn btn-control" title="Step Forward">⏭️</button>
+                <button id="reset" class="btn btn-control" title="Reset">🔄</button>
+                
+                <div class="speed-control">
+                    <label for="speed">Speed:</label>
+                    <input type="range" id="speed" min="1" max="10" value="5" step="1">
+                    <span id="speedValue">5x</span>
+                </div>
+            </div>
+
+            <!-- Canvas for Gantt Chart -->
+            <div class="canvas-container">
+                <canvas id="ganttCanvas"></canvas>
+            </div>
+
+            <!-- Timeline Scrubber -->
+            <div class="timeline-scrubber">
+                <label for="timeline">Timeline:</label>
+                <input type="range" id="timeline" min="0" max="100" value="0" step="1">
+                <span id="timelineValue">0</span>
+            </div>
+
+            <!-- Current Status -->
+            <div class="status-panel">
+                <div class="status-item">
+                    <span class="status-label">Current Time:</span>
+                    <span id="currentTime" class="status-value">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Current Process:</span>
+                    <span id="currentProcess" class="status-value">None</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Ready Queue:</span>
+                    <span id="readyQueue" class="status-value">[]</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="statistics-section">
+            <div class="panel-header">
+                <h2>📈 Performance Metrics</h2>
+            </div>
+            
+            <div id="statsTable" class="stats-table-container"></div>
+
+            <!-- Export Controls -->
+            <div class="export-controls">
+                <button id="exportScreenshot" class="btn btn-export">📸 Export Screenshot</button>
+                <button id="exportTrace" class="btn btn-export">📄 Export Trace</button>
+            </div>
+        </section>
+
+        <!-- Color Legend -->
+        <section class="legend-section">
+            <h3>🎨 Color Legend</h3>
+            <div class="legend-grid" id="colorLegend"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>BCSE303L - Operating Systems | CPU Scheduling Visualization | DA1 Assignment</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
