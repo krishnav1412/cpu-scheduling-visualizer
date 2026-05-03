@@ -17,8 +17,7 @@ An interactive, client-side web application for visualizing and analyzing CPU sc
 - [Algorithms Implemented](#algorithms-implemented)
 - [Performance Metrics](#performance-metrics)
 - [Browser Compatibility](#browser-compatibility)
-- [Author](#author)
-- [License](#license)
+
 
 ---
 
@@ -280,30 +279,6 @@ This project demonstrates:
 - Real-time system visualization
 - Performance metric calculation
 - Web-based animation techniques
-
----
-
-## 👨‍💻 Author
-
-**[Your Name]**  
-Roll No: [Your Roll Number]  
-Course: BCSE303L - Operating Systems  
-Batch: [Your Batch]  
-Institution: [Your Institution]
-
----
-
-## 📝 License
-
-This project is developed as part of BCSE303L coursework. For educational purposes only.
-
----
-
-## 🙏 Acknowledgments
-
-- Course Instructor: [Instructor Name]
-- Operating Systems Concepts (Silberschatz, Galvin, Gagne)
-- MDN Web Docs for Canvas API reference
 
 ---
 
