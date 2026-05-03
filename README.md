@@ -21,6 +21,20 @@ An interactive, client-side web application for visualizing and analyzing CPU sc
 
 ---
 
+## Screenshots
+
+### Configuration Panel
+![Config](screenshots/config-panel.png)
+
+### Gantt Chart Visualization
+![Gantt](screenshots/gantt-chart.png)
+
+### Export Feature
+![Export](screenshots/export-screenshot-feature.png)
+
+### Algorithm Output
+![Output](screenshots/export-trace-feature.png)
+
 ## 🎯 Overview
 
 This project is a comprehensive visualization tool for understanding CPU scheduling algorithms in Operating Systems. It provides an interactive Gantt chart animation, detailed statistics, and supports multiple scheduling algorithms including FCFS, SJF, Round Robin, and Priority Scheduling.
@@ -293,3 +307,5 @@ For issues, questions, or contributions:
 **Last Updated**: October 31, 2025
 
 Made for BCSE303L - Operating Systems
+
+
